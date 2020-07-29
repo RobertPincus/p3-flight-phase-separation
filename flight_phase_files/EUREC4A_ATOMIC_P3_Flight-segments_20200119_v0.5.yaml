@@ -1,0 +1,103 @@
+name: RF02
+mission: EUREC4A
+activity: ATOMIC
+platform: P3
+flight_id:
+contacts:
+- name: Robert Pincus
+  email: Robert.Pincus@colorado.edu
+  tags:
+  - dataset creator
+- name: Adriana Bailey
+  email: abailey@ucar.edu
+  tags:
+  - dataset creator
+- name: Chris Fairall
+  email: Chris.Fairall@noaa.gov
+  tags:
+  - flight PI
+date: 2020-01-19
+flight_report: https://observations.ipsl.fr/aeris/eurec4a-data/REPORTS/WP-3D/2020/20200119/WP-3D-1901.pdf
+takeoff: 2020-01-19 09:34:25
+landing: 2020-01-19 18:48:03
+events: [] # name, time
+remarks: []
+
+segments:
+- kinds:
+  - transit
+  name: ascent and transit
+  irregularities: []
+  segment_id: P3-0119_t1
+  start: 2020-01-19 13:25:00
+  end: 2020-01-19 13:52:00
+- kinds:
+  - circle
+  name: circle 1
+  irregularities: []
+  segment_id: P3-0119_c1
+  start: 2020-01-19 14:35:15
+  end: 2020-01-19 15:30:30
+- kinds:
+  - profile
+  name: isotope profile descending
+  irregularities: []
+  segment_id: P3-0119_p1
+  start: 2020-01-19 15:46:00
+  end: 2020-01-19 16:08:00
+- kinds:
+  - profile
+  name: isotope profile ascending
+  irregularities: []
+  segment_id: P3-0119_p2
+  start: 2020-01-19 16:08:00
+  end: 2020-01-19 17:18:15
+- kinds:
+  - transit
+  name: transit to start of AXBT pattern
+  irregularities: []
+  segment_id: P3-0119_t2
+  start: 2020-01-19 16:21:00
+  end: 2020-01-19 16:31:00
+- kinds:
+  - axbt
+  name: AXBT pattern
+  irregularities: []
+  segment_id: P3-0119_a1
+  start: 2020-01-19 16:31:00
+  end: 2020-01-19 19:05:45
+- kinds:
+  - transit
+  name: Start of transit back to Barbados
+  irregularities: []
+  segment_id: P3-0119_t3
+  start: 2020-01-19 19:05:45
+  end: 2020-01-19 20:34:00
+- kinds:
+  - profile
+  name: isotope profile 2 descending
+  irregularities: []
+  segment_id: P3-0119_p3
+  start: 2020-01-19 20:34:00
+  end: 2020-01-19 20:43:00
+- kinds:
+  - profile
+  name: isotope profile 2 ascending
+  irregularities: []
+  segment_id: P3-0119_p4
+  start: 2020-01-19 20:43:00
+  end: 2020-01-19 20:53:00
+- kinds:
+  - transit
+  name: Continuation of transit back to Barbados
+  irregularities: []
+  segment_id: P3-0119_t4
+  start: 2020-01-19 20:53:00
+  end: 2020-01-19 21:28:30
+- kinds:
+  - transit
+  name: Descent to Barbados
+  irregularities: []
+  segment_id: P3-0119_t5
+  start: 2020-01-19 21:28:30
+  end: 2020-01-19 21:48

@@ -27,7 +27,7 @@ from   mpl_toolkits.axes_grid1 import make_axes_locatable
 
 dataDir = pathlib.Path('/Users/robert/Dropbox/Scientific/Projects/ATOMIC:EURECA4/data')
 segDir  = pathlib.Path('./flight_phase_files')
-figDir = pathlib.Path('.')
+figDir  = pathlib.Path('.')
 #
 # Can I get the list of dates automatically? Until then...
 #
@@ -39,7 +39,8 @@ flight_dates = ['2020-01-17', '2020-01-19', '2020-01-23',
 seg_col_dict = {"circle":cc.glasbey_cool[1],
                 "profile":cc.glasbey_cool[2],
                 "transit":cc.glasbey_cool[3],
-                "cloud":cc.glasbey_cool[5]}
+                "cloud":cc.glasbey_cool[5],
+                "axbt":cc.glasbey_cool[7]}
 
 ##########################
 def set_up_map(plt, lon_w = -60.5, lon_e = -49, lat_s = 10, lat_n = 16.5):
@@ -81,9 +82,9 @@ if __name__ == "__main__":
         #
         # Open data, flight segment files
         #
-        f1 = xr.open_dataset(sorted(dataDir.joinpath('flight-level-summary/Level_2').glob("*.nc"))[0])
+        f1 = xr.open_dataset(sorted(dataDir.joinpath('flight-level-summary/Level_2').glob("*.nc"))[1])
         f1 = f1.where(f1.alt > 0, drop=True)
-        f1_segments = yaml.safe_load(open('/Users/robert/Codes/p3-flight-phase-separation/flight_phase_files/example.yaml'))
+        f1_segments = yaml.safe_load(open('/Users/robert/Codes/p3-flight-phase-separation/flight_phase_files/EUREC4A_ATOMIC_P3_Flight-segments_20200119_v0.5.yaml'))
 
 
         #

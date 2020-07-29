@@ -40,3 +40,7 @@ All segments, but especially `cloud` and `transit` segments, may also include
 
 ### cline
 - Legs in which the aircraft is actively ascending or descending
+
+For the moment we are creating the flight_phase_files by hand. They should be processed with the `scripts/utils/attach_sondes.py` from the HALO flight phase repo to incorporate the dropsondes from JOANNE. Probably we create AXBT IDs to mirror the sonde IDs and include those too.
+
+Takeoff and landing times need revision in the files.
