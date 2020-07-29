@@ -2,11 +2,8 @@
 
 import xarray as xr
 import numpy as np
-import seaborn as sns
 import datetime
 import yaml
-
-import colorcet as cc
 import pathlib
 
 import matplotlib as mpl
@@ -24,6 +21,10 @@ from   cartopy.mpl.gridliner import LONGITUDE_FORMATTER, LATITUDE_FORMATTER
 from   mpl_toolkits.axes_grid1.inset_locator import inset_axes
 from   mpl_toolkits.axes_grid1 import make_axes_locatable
 
+import seaborn as sns
+import colorcet as cc
+
+########
 
 dataDir = pathlib.Path('/Users/robert/Dropbox/Scientific/Projects/ATOMIC:EURECA4/data')
 segDir  = pathlib.Path('./flight_phase_files')

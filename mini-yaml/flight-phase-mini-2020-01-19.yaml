@@ -1,0 +1,105 @@
+- kind: transit
+  name: ascent and transit
+  start:
+    hour: 13
+    min: 26
+  end:
+    hour: 13
+    min: 52
+
+- kind: circle
+  name: circle 1
+  start:
+    hour: 14
+    min: 35
+    sec: 15
+  end:
+    hour: 15
+    min: 30
+    sec: 30
+
+- kind: profile
+  name: isotope profile descending
+  start:
+    hour: 15
+    min: 46
+  end:
+    hour: 16
+    min: 08
+
+- kind: profile
+  name: isotope profile ascending
+  start:
+    hour: 16
+    min: 08
+  end:
+    hour: 16
+    min: 18
+    sec: 15
+
+- kind: transit
+  name: transit to start of AXBT pattern
+  start:
+    hour: 16
+    min: 21
+  end:
+    hour: 16
+    min: 31
+
+- kind: axbt
+  name: AXBT pattern
+  start:
+    hour: 16
+    min: 31
+  end:
+    hour: 19
+    min: 05
+    sec: 45
+
+- kind: transit
+  name: Start of transit back to Barbados
+  start:
+    hour: 19
+    min: 05
+    sec: 45
+  end:
+    hour: 20
+    min: 34
+
+- kind: profile
+  name: isotope profile 2 descending
+  start:
+    hour: 20
+    min: 34
+  end:
+    hour: 20
+    min: 43
+
+- kind: profile
+  name: isotope profile 2 ascending
+  start:
+    hour: 20
+    min: 43
+  end:
+    hour: 20
+    min: 53
+
+- kind: transit
+  name: Continuation of transit back to Barbados
+  start:
+    hour: 20
+    min: 53
+  end:
+    hour: 21
+    min: 28
+    sec: 30
+
+- kind: transit
+  name: Descent to Barbados
+  start:
+    hour: 21
+    min: 28
+    sec: 30
+  end:
+    hour: 21
+    min: 47
