@@ -41,6 +41,13 @@ All segments, but especially `cloud` and `transit` segments, may also include
 ### cline
 - Legs in which the aircraft is actively ascending or descending
 
-For the moment we are creating the flight_phase_files by hand. They should be processed with the `scripts/utils/attach_sondes.py` from the HALO flight phase repo to incorporate the dropsondes from JOANNE. Probably we create AXBT IDs to mirror the sonde IDs and include those too.
+# Workflow
 
-Takeoff and landing times need revision in the files.
+This repo contains a directory of minimal YAML files in describing only the segments from a P3 research flight
+during ATOMIC by category (kind), name, time and window (start, end). The script `scripts/expand_yaml.py` searches this
+directory and transform each minimal file into more complete YAML files following the conventions used by HALO.
+
+Takeoff and landing times are inferred from the flight-level summary file in a simple way, Segment time windows are
+checked against the flight times. Segment IDs are created automatically in the order the segments are provided in the mini-yaml file.
+
+Once the more complete files are created They should be processed with the `scripts/utils/attach_sondes.py` from the HALO flight phase repo to incorporate the dropsondes from JOANNE. Probably we create AXBT IDs to mirror the sonde IDs and include those too.
