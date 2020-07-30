@@ -1,0 +1,79 @@
+- kind: profile
+  name: ascent for transit
+  start:
+    hour: 13
+    min: 21
+    sec: 05
+  end:
+    hour: 13
+    min: 28
+    sec: 30
+
+- kind: circle
+  name: circle 1
+  start:
+    hour: 13
+    min: 35
+  end:
+    hour: 14
+    min: 47
+    sec: 42
+
+- kind: circle
+  name: circle 2
+  start:
+    hour: 14
+    min: 47
+    sec: 42
+  end:
+    hour: 15
+    min: 58
+    sec: 48
+
+- kind: circle
+  name: half-circle 3
+  start:
+    hour: 15
+    min: 58
+    sec: 48
+  end:
+    hour: 16
+    min: 34
+    sec: 30
+
+- kind: profile
+  name: isotope profile descending
+  start:
+    hour: 16
+    min: 37
+    sec: 30
+  end:
+    hour: 16
+    min: 48
+
+- kind: cloud
+  name: cloud 1
+  start:
+    hour: 16
+    min: 48
+  end:
+    hour: 18
+    min: 44
+
+- kind: cloud
+  name: cloud 2
+  start:
+    hour: 19
+    min: 13
+  end:
+    hour: 21
+    min: 16
+
+- kind: profile
+  name: ascent for transit to Barbados
+  start:
+    hour: 21
+    min: 16.5
+  end:
+    hour: 21
+    min: 28
