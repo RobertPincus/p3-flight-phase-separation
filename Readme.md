@@ -12,7 +12,7 @@ Flight will be broadly described using four types of segments
 ### profile
 - Long ascents or descents, typically at constant heading and nearly constant ascent or descent rate
 
-### AXBT
+### axbt
 - A series of straight and level legs, flown at 9000-10000 ft/2.75-3 km, from which AXBTs were deployed.
 
 ### cloud
