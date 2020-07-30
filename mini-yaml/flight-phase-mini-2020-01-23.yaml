@@ -1,0 +1,85 @@
+- kind: profile
+  name: ascent for transit
+  start:
+    hour: 13
+    min: 21
+    sec: 05
+  end:
+    hour: 13
+    min: 43
+    sec: 30
+
+- kind: circle
+  name: circle 1
+  start:
+    hour: 14
+    min: 6
+  end:
+    hour: 15
+    min: 1
+
+- kind: profile
+  name: isotope profile descending
+  start:
+    hour: 15
+    min: 6
+  end:
+    hour: 15
+    min: 32
+
+- kind: profile
+  name: isotope profile ascending
+  start:
+    hour: 15
+    min: 48
+  end:
+    hour: 15
+    min: 58
+
+- kind: transit
+  name: transit to start of AXBT pattern
+  start:
+    hour: 15
+    min: 58
+  end:
+    hour: 16
+    min: 8
+
+- kind: axbt
+  name: AXBT pattern
+  start:
+    hour: 16
+    min: 8
+  end:
+    hour: 18
+    min: 57
+
+- kind: profile
+  name: isotope profile 2 descending
+  start:
+    hour: 19
+    min: 7
+    sec: 30
+  end:
+    hour: 19
+    min: 18
+
+- kind: profile
+  name: isotope profile 2 ascending
+  start:
+    hour: 19
+    min: 18
+  end:
+    hour: 19
+    min: 42
+    sec: 30
+
+- kind: circle
+  name: circle 2
+  start:
+    hour: 19
+    min: 45
+  end:
+    hour: 20
+    min: 41
+    sec: 30

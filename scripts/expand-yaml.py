@@ -71,6 +71,7 @@ for d in flight_dates:
     if len(mini_files) is 0:
         print ("Mini YAML file missing, skipping date " + d)
     else:
+        print('Flight RF{:02d}'.format(flight_dates.index(d) + 1))
         print("  nominal takeoff time", takeoff_time, "nominal landing time", landing_time)
         with open(mini_files[0]) as mini:
             m = yaml.safe_load(mini)
@@ -120,7 +121,9 @@ for d in flight_dates:
                             'version': data_version,
                             'segments':[seg for seg in m]})
 
-        output_name = seg_dir.joinpath("{}_{}".format(platform, variable) + "_{:04d}{:02d}{:02d}".format(year,month,day) + data_version + ".yaml")
+        output_name = seg_dir.joinpath("{}_{}".format(platform, variable) +
+                                       "_{:04d}{:02d}{:02d}".format(year,month,day) + "_" + data_version + ".yaml")
         print ("  Writing to ", output_name)
         with open(output_name, "w") as stream:
             yaml.dump(flight_yaml, stream, default_flow_style=False, sort_keys=False)
+        print()

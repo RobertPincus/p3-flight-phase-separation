@@ -26,9 +26,8 @@ import colorcet as cc
 
 ########
 
-dataDir = pathlib.Path('/Users/robert/Dropbox/Scientific/Projects/ATOMIC:EURECA4/data')
-segDir  = pathlib.Path('./flight_phase_files')
-figDir  = pathlib.Path('.')
+data_dir = pathlib.Path('/Users/robert/Dropbox/Scientific/Projects/ATOMIC:EURECA4/data')
+seg_dir  = pathlib.Path('./flight_phase_files')
 #
 # Can I get the list of dates automatically? Until then...
 #
@@ -80,45 +79,57 @@ if __name__ == "__main__":
     mpl.rcParams["legend.frameon"] = False
 
     with PdfPages('flight-segment-figures.pdf') as pdf:
-        #
-        # Open data, flight segment files
-        #
-        f1 = xr.open_dataset(sorted(dataDir.joinpath('flight-level-summary/Level_2').glob("*.nc"))[1])
-        f1 = f1.where(f1.alt > 0, drop=True)
-        f1_segments = yaml.safe_load(open('/Users/robert/Codes/p3-flight-phase-separation/flight_phase_files/EUREC4A_ATOMIC_P3_Flight-segments_20200119_v0.5.yaml'))
+        for d in flight_dates:
+            year  = int(d[0:4])
+            month = int(d[5:7])
+            day   = int(d[8:10])
+            #
+            # Open data, flight segment files
+            #
+            fl_file = sorted(data_dir.joinpath("flight-level-summary/Level_2").glob("*" + d.replace('-', '')  + "*.nc"))[0]
+            with fl_file as flight_level:
+                f1 = xr.open_dataset(flight_level)
+            f1 = f1.where(f1.alt > 0, drop=True)
+            yaml_files = sorted(seg_dir.glob("*_{:04d}{:02d}{:02d}".format(year,month,day) + "*.yaml"))
+            if len(yaml_files) is 0:
+                print ("YAML file missing, skipping date " + d)
+            else:
+                f1_segments = yaml.safe_load(open(yaml_files[0]))
 
 
-        #
-        # Side view
-        #
-        sns.set_context("paper")
-        fig = plt.figure(figsize = (7.5,8.5))
+                #
+                # Side view
+                #
+                sns.set_context("paper")
+                fig = plt.figure(figsize = (7.5,8.5))
 
-        # The whole flight track
-        plt.plot(f1.time, f1.alt,
-                 lw=2, c = "black")
+                # The whole flight track
+                plt.plot(f1.time, f1.alt,
+                         lw=2, c = "black")
 
-        for s in f1_segments["segments"]:
-            seg = f1.sel(time = slice(s["start"], s["end"]))
-            kind = s["kinds"][0]
-            plt.plot(seg.time, seg.alt,
-                     lw=2, c = seg_col_dict[kind], label=kind)
+                for s in f1_segments["segments"]:
+                    seg = f1.sel(time = slice(s["start"], s["end"]))
+                    kind = s["kinds"][0]
+                    plt.plot(seg.time, seg.alt,
+                             lw=2, c = seg_col_dict[kind], label=kind)
 
-        plt.legend(fontsize=10,framealpha=0.8,markerscale=5)
-        pdf.savefig()
+                plt.legend(fontsize=10,framealpha=0.8,markerscale=5)
+                pdf.savefig()
 
-        #
-        # Plan view
-        #
-        sns.set_context("paper")
-        fig = plt.figure(figsize = (7.5,8.5))
-        ax  = set_up_map(plt)
-        add_gridlines(ax)
+                #
+                # Plan view
+                #
+                sns.set_context("paper")
+                fig = plt.figure(figsize = (7.5,8.5))
+                ax  = set_up_map(plt)
+                add_gridlines(ax)
 
-        for s in f1_segments["segments"]:
-            seg = f1.sel(time = slice(s["start"], s["end"]))
-            kind = s["kinds"][0]
-            ax.plot(seg.lon,seg.lat,lw=2,alpha=0.5,c=seg_col_dict[kind],
-                    transform=ccrs.PlateCarree(),zorder=7)
+                for s in f1_segments["segments"]:
+                    seg = f1.sel(time = slice(s["start"], s["end"]))
+                    kind = s["kinds"][0]
+                    ax.plot(seg.lon,seg.lat,lw=2,alpha=0.5,c=seg_col_dict[kind],
+                            transform=ccrs.PlateCarree(),zorder=7)
 
-        pdf.savefig()
+                pdf.savefig()
+
+        # pdf.close()

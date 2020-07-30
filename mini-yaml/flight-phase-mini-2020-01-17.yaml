@@ -1,0 +1,62 @@
+ - kind: profile
+   name: ascent to transit altitude
+   start:
+     hour: 14
+     min: 0
+     sec: 05
+   end:
+     hour: 14
+     min: 22
+ - kind: circle
+   name: circle 1
+   start:
+     hour: 15
+     min: 26
+     sec: 18
+   end:
+     hour: 16
+     min: 25
+     sec: 36
+ - kind: profile
+   name: isotope profile descending
+   start:
+     hour: 16
+     min: 31
+   end:
+     hour: 16
+     min: 55
+ - kind: profile
+   name: isotope profile ascending
+   start:
+     hour: 16
+     min: 57
+   end:
+     hour: 17
+     min: 08
+ - kind: cloud
+   name: cloud/flux flight pattern
+   start:
+     hour: 17
+     min: 15
+   end:
+     hour: 18
+     min: 45
+     sec: 30
+ - kind: transit
+   name: return transit, low to allow sampling with cloud radar
+   start:
+     hour: 18
+     min: 45
+     sec: 30
+   end:
+     hour: 20
+     min: 34
+     sec: 30
+ - kind: transit
+   name: descent on return to Barbados
+   start:
+     hour: 20
+     min: 34
+   end:
+     hour: 20
+     min: 50
