@@ -95,20 +95,27 @@ if __name__ == "__main__":
     mpl.rcParams["legend.frameon"] = False
 
     p3data = open_catalog(str(cat_dir.joinpath('main.yaml')))
+    #
+    # JOANNE not yet available via OpenDAP
+    #
+    dataDir = pathlib.Path('/Users/robert/Dropbox/Scientific/Projects/ATOMIC:EURECA4/data')
+    joanne_l3 = xr.open_dataset(dataDir.joinpath('JOANNE/Level_3/EUREC4A_JOANNE_Dropsonde-RD41_Level_3_v0.5.7-alpha+0.g45fe69d.dirty.nc'))
+    joanne_l3_p3 = joanne_l3.where(joanne_l3.Platform=='P3', drop='True').swap_dims({"sounding":"launch_time"})
+
     with PdfPages('flight-segment-figures.pdf') as pdf:
         for d in flight_dates:
             #
             # Open data, flight segment files
             #
-            print('Flight RF{:02d}'.format(flight_dates.index(d) + 1))
-            f1 = p3data.flight_level[d.strftime("P3-%m%d")].to_dask()
-            f1 = f1.where(f1.alt > 0, drop=True)
             yaml_files = sorted(seg_dir.glob("*" + d.strftime("_%Y%m%d") + "*.yaml"))
             if len(yaml_files) is 0:
                 print ("YAML file missing, skipping date " + d.strftime('%Y-%m-%d'))
             else:
                 f1_segments = yaml.safe_load(open(yaml_files[0]))
-
+                print('Flight RF{:02d}'.format(flight_dates.index(d) + 1))
+                f1 = p3data.flight_level[d.strftime("P3-%m%d")].to_dask()
+                f1 = f1.where(f1.alt > 0, drop=True)
+                sondes = joanne_l3_p3.sel(launch_time = d.strftime("%Y-%m-%d"))
 
                 #
                 # Side view
@@ -126,7 +133,7 @@ if __name__ == "__main__":
                     plt.plot(seg.time, seg.alt,
                              lw=2, c = seg_col_dict[kind], label=kind)
 
-                plt.title('Flight RF{:02d}'.format(flight_dates.index(d) + 1))
+                plt.title('Flight RF{:02d}, '.format(flight_dates.index(d) + 1) + d.strftime('%Y-%m-%d'))
                 plt.legend(fontsize=10,framealpha=0.8,markerscale=5)
                 pdf.savefig()
 
@@ -139,6 +146,8 @@ if __name__ == "__main__":
                 add_gridlines(ax)
 
                 ax.plot(f1.lon, f1.lat,lw=2,alpha=0.5,c="grey",
+                        transform=ccrs.PlateCarree(),zorder=7)
+                ax.scatter(sondes.flight_lon, sondes.flight_lat,lw=2,alpha=0.5,c="red",
                         transform=ccrs.PlateCarree(),zorder=7)
                 for s in f1_segments["segments"]:
                     seg = f1.sel(time = slice(s["start"], s["end"]))

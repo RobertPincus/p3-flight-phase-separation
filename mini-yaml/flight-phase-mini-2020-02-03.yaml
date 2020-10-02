@@ -5,13 +5,13 @@
     min: 13
   end:
     hour: 15
-    min: 00
+    min: 07
 
 - kind: profile
   name: isotope profiles
   start:
     hour: 15
-    min: 00
+    min: 07
   end:
     hour: 15
     min: 45
