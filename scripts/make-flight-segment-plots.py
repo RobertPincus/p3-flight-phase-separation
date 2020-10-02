@@ -126,6 +126,7 @@ if __name__ == "__main__":
                     plt.plot(seg.time, seg.alt,
                              lw=2, c = seg_col_dict[kind], label=kind)
 
+                plt.title('Flight RF{:02d}'.format(flight_dates.index(d) + 1))
                 plt.legend(fontsize=10,framealpha=0.8,markerscale=5)
                 pdf.savefig()
 
@@ -137,6 +138,8 @@ if __name__ == "__main__":
                 ax  = set_up_map(plt)
                 add_gridlines(ax)
 
+                ax.plot(f1.lon, f1.lat,lw=2,alpha=0.5,c="grey",
+                        transform=ccrs.PlateCarree(),zorder=7)
                 for s in f1_segments["segments"]:
                     seg = f1.sel(time = slice(s["start"], s["end"]))
                     kind = s["kinds"][0]

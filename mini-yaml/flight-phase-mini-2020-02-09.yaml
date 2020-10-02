@@ -1,0 +1,53 @@
+- kind: transit
+  name: transit to cloud module 1
+  start:
+    hour: 01
+    min: 57
+  end:
+    hour: 02
+    min: 34
+
+- kind: cloud
+  name: cloud module 1
+  start:
+    hour: 02
+    min: 34
+  end:
+    hour: 04
+    min: 18
+
+- kind: circle
+  name: HALO circle
+  start:
+    hour: 04
+    min: 18
+  end:
+    hour: 05
+    min: 36
+
+- kind: circle
+  name: RHB circle
+  start:
+    hour: 05
+    min: 57
+  end:
+    hour: 06
+    min: 54
+
+- kind: profile
+  name: isotope profiles
+  start:
+    hour: 06
+    min: 54
+  end:
+    hour: 07
+    min: 25
+
+- kind: cloud
+  name: cloud module 2
+  start:
+    hour: 07
+    min: 25
+  end:
+    hour: 09
+    min: 21
