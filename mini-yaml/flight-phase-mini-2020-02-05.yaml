@@ -1,0 +1,44 @@
+- kind: circle
+  name: circle 1
+  start:
+    hour: 14
+    min: 00
+  end:
+    hour: 15
+    min: 45
+
+- kind: profile
+  name: isotope profiles
+  start:
+    hour: 15
+    min: 45
+  end:
+    hour: 16
+    min: 05
+
+- kind: cloud
+  name: cloud module 1
+  start:
+    hour: 16
+    min: 05
+  end:
+    hour: 17
+    min: 50
+
+- kind: cloud
+  name: cloud module 2
+  start:
+    hour: 17
+    min: 50
+  end:
+    hour: 19
+    min: 15
+
+- kind: cloud
+  name: cloud module 3
+  start:
+    hour: 19
+    min: 15
+  end:
+    hour: 21
+    min: 05

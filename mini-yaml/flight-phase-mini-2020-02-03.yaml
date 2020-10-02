@@ -1,0 +1,54 @@
+- kind: circle
+  name: circle 1
+  start:
+    hour: 14
+    min: 13
+  end:
+    hour: 15
+    min: 00
+
+- kind: profile
+  name: isotope profiles
+  start:
+    hour: 15
+    min: 00
+  end:
+    hour: 15
+    min: 45
+
+- kind: axbt
+  name: AXBT pattern
+  start:
+    hour: 15
+    min: 45
+  end:
+    hour: 17
+    min: 27
+
+- kind: transit
+  name: Transit to cloud
+  start:
+    hour: 17
+    min: 27
+  end:
+    hour: 17
+    min: 38
+
+- kind: cloud
+  name: Entire cloud module
+  start:
+    hour: 17
+    min: 38
+  end:
+    hour: 18
+    min: 45
+
+- kind: transit
+  name: Transit to Barbados
+  start:
+    hour: 18
+    min: 45
+  end:
+    hour: 19
+    min: 21
+    sec: 57
