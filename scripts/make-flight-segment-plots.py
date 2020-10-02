@@ -5,6 +5,7 @@ import numpy as np
 import datetime
 import yaml
 import pathlib
+from intake import open_catalog
 
 import matplotlib as mpl
 import matplotlib.pyplot as plt
@@ -26,15 +27,23 @@ import colorcet as cc
 
 ########
 
-data_dir = pathlib.Path('/Users/robert/Dropbox/Scientific/Projects/ATOMIC:EURECA4/data')
 seg_dir  = pathlib.Path('./flight_phase_files')
+cat_dir  = pathlib.Path('/Users/robert/Dropbox/Scientific/Papers/ATOMIC-P3-data/Figures/p3-intake-catalog/')
+
 #
 # Can I get the list of dates automatically? Until then...
 #
-flight_dates = ['2020-01-17', '2020-01-19', '2020-01-23',
-                '2020-01-24', '2020-01-31',
-                '2020-02-03', '2020-02-04', '2020-02-05',
-                '2020-02-09', '2020-02-10', '2020-02-11']
+flight_dates = [datetime.date(2020, 1, 17),
+                datetime.date(2020, 1, 19),
+                datetime.date(2020, 1, 23),
+                datetime.date(2020, 1, 24),
+                datetime.date(2020, 1, 31),
+                datetime.date(2020, 2,  3),
+                datetime.date(2020, 2,  4),
+                datetime.date(2020, 2,  5),
+                datetime.date(2020, 2,  9),
+                datetime.date(2020, 2, 10),
+                datetime.date(2020, 2, 11)]
 
 seg_col_dict = {"circle":cc.glasbey_cool[1],
                 "profile":cc.glasbey_cool[2],
@@ -68,6 +77,13 @@ def add_gridlines(ax):
     gl.xlabels_bottom = False
     gl.xlabel = {'Latitude'}
 
+def date_to_datetime(d, tm):
+    # '''Here tm is a dict with keys hour, min, and optinally sec'''
+    if 'sec' in tm.keys():
+        return(datetime.datetime(d.year, d.month, d.day, hour=int(tm["hour"]), minute=int(tm["min"]), second=int(tm["sec"])))
+    else:
+        return(datetime.datetime(d.year, d.month, d.day, hour=int(tm["hour"]), minute=int(tm["min"])))
+
 if __name__ == "__main__":
     #
     # Graphical choices
@@ -78,21 +94,18 @@ if __name__ == "__main__":
     mpl.rcParams['font.family'] = "sans-serif"
     mpl.rcParams["legend.frameon"] = False
 
+    p3data = open_catalog(str(cat_dir.joinpath('main.yaml')))
     with PdfPages('flight-segment-figures.pdf') as pdf:
         for d in flight_dates:
-            year  = int(d[0:4])
-            month = int(d[5:7])
-            day   = int(d[8:10])
             #
             # Open data, flight segment files
             #
-            fl_file = sorted(data_dir.joinpath("flight-level-summary/Level_2").glob("*" + d.replace('-', '')  + "*.nc"))[0]
-            with fl_file as flight_level:
-                f1 = xr.open_dataset(flight_level)
+            print('Flight RF{:02d}'.format(flight_dates.index(d) + 1))
+            f1 = p3data.flight_level[d.strftime("P3-%m%d")].to_dask()
             f1 = f1.where(f1.alt > 0, drop=True)
-            yaml_files = sorted(seg_dir.glob("*_{:04d}{:02d}{:02d}".format(year,month,day) + "*.yaml"))
+            yaml_files = sorted(seg_dir.glob("*" + d.strftime("_%Y%m%d") + "*.yaml"))
             if len(yaml_files) is 0:
-                print ("YAML file missing, skipping date " + d)
+                print ("YAML file missing, skipping date " + d.strftime('%Y-%m-%d'))
             else:
                 f1_segments = yaml.safe_load(open(yaml_files[0]))
 

@@ -34,7 +34,7 @@ data_version = "v0.5"
 # Controlled vocabulary for segment types - the script will complain if a segment has a different kind.
 #
 valid_seg_types = ['transit', 'circle', 'profile', 'axbt', 'cloud']
-include_seg_types = ['circle']
+include_seg_types = valid_seg_types # ['circle']
 #
 # .
 #
@@ -113,7 +113,7 @@ if __name__ == "__main__":
                 #  We're assuming that the segments come in sorted
                 #
                 if seg["kind"] not in valid_seg_types:
-                    print ("oh noes I don't understand this segment type")
+                    print ("oh noes I don't understand segment type ", seg["kind"])
                     seg["segment_id"] = "NULL"
                 else:
                     type_counts[seg["kind"]] += 1
@@ -140,7 +140,7 @@ if __name__ == "__main__":
                                 'segments':[seg for seg in m if seg["kinds"][0] in include_seg_types]})
 
             output_name = seg_dir.joinpath("{}_{}_{}_{}".format(campaign, project, platform, variable) +
-                                           d.strftime("_%Y%m%y") + "_" + data_version + ".yaml")
+                                           d.strftime("_%Y%m%d") + "_" + data_version + ".yaml")
             print ("  Writing to ", output_name)
             with open(output_name, "w") as stream:
                 yaml.dump(flight_yaml, stream, default_flow_style=False, sort_keys=False)
