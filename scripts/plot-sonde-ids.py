@@ -92,7 +92,7 @@ if __name__ == "__main__":
         p3_sondes = [s for s in yaml.safe_load(infile) if s["platform"]  == "P3"]
     print("P3 dropped", len(p3_sondes), "total sondes")
 
-    with PdfPages('flight-segment-figures.pdf') as pdf:
+    with PdfPages('sonde-positions.pdf') as pdf:
         for d in flight_dates:
             #
             # Open data, flight segment files
@@ -127,3 +127,4 @@ if __name__ == "__main__":
 
             plt.title('Flight RF{:02d}, '.format(flight_dates.index(d) + 1) + d.strftime('%Y-%m-%d'))
             pdf.savefig()
+            plt.close(fig)
