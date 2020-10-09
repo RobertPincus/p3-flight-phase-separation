@@ -12,11 +12,11 @@
    start:
      hour: 15
      min: 26
-     sec: 18
+     sec: 00
    end:
      hour: 16
-     min: 25
-     sec: 36
+     min: 24
+     sec: 36 # 15 is one min after last sounding
  - kind: profile
    name: isotope profile descending
    start:

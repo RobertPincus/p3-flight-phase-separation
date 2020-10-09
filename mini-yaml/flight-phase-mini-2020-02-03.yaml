@@ -6,12 +6,14 @@
   end:
     hour: 15
     min: 07
+    sec: 44
 
 - kind: profile
   name: isotope profiles
   start:
     hour: 15
     min: 07
+    sec: 44
   end:
     hour: 15
     min: 45

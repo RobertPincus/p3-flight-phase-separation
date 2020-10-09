@@ -2,10 +2,11 @@
   name: circle 1
   start:
     hour: 14
-    min: 45
+    min: 44
+    sec: 38
   end:
     hour: 15
-    min: 40
+    min: 38
 
 - kind: profile
   name: isotope profiles

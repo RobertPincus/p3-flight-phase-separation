@@ -11,25 +11,30 @@
   name: circle 1
   start:
     hour: 04
-    min: 13
+    min: 17
+    sec: 25
   end:
     hour: 05
     min: 24
+    sec: 44
 
 - kind: transit
   name: Transit to circle 2
   start:
     hour: 05
-    min: 25
+    min: 24
+    sec: 44
   end:
     hour: 05
     min: 45
+    sec: 43
 
 - kind: circle
   name: circle 2
   start:
     hour: 05
-    min: 46
+    min: 45
+    sec: 43
   end:
     hour: 06
     min: 42

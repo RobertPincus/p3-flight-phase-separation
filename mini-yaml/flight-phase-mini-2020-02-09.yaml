@@ -20,25 +20,30 @@
   name: HALO circle
   start:
     hour: 04
-    min: 18
+    min: 17
+    sec: 28
   end:
     hour: 05
-    min: 36
+    min: 33
+    sec: 14
 
 - kind: circle
   name: RHB circle
   start:
     hour: 05
-    min: 57
+    min: 56
+    sec: 49
   end:
     hour: 06
     min: 54
+    sec: 50
 
 - kind: profile
   name: isotope profiles
   start:
     hour: 06
     min: 54
+    sec: 50
   end:
     hour: 07
     min: 25
