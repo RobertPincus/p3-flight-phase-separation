@@ -2,8 +2,8 @@
   name: circle 1
   start:
     hour: 14
-    min: 44
-    sec: 38
+    min: 40
+    sec: 29
   end:
     hour: 15
     min: 38

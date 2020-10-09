@@ -6,7 +6,8 @@
     sec: 45
   end:
     hour: 15
-    min: 21
+    min: 20
+    sec: 28
 
 - kind: profile
   name: isotope profiles

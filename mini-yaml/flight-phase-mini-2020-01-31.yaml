@@ -13,9 +13,11 @@
   start:
     hour: 16
     min: 24
+    sec: 10
   end:
     hour: 17
-    min: 21
+    min: 16
+    sec: 54
 
 - kind: profile
   name: isotope profile descending
