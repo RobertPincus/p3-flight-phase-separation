@@ -128,7 +128,7 @@ if __name__ == "__main__":
                 seg = {s:seg[s] for s in ["kinds", "name", "segment_id", "start", "end", "irregularities"] }
 
             flight_yaml = p3_info
-            flight_yaml.update({'flight_id': d.strftime("P3-%m%y"),
+            flight_yaml.update({'flight_id': d.strftime("P3-%m%d"),
                                 'name': 'RF{:02d}'.format(flight_dates.index(d) + 1),
                                 'events': [],
                                 'remarks': [],

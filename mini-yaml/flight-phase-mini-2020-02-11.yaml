@@ -3,6 +3,7 @@
   start:
     hour: 05
     min: 31
+    sec: 26
   end:
     hour: 06
     min: 39

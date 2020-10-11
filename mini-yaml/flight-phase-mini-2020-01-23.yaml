@@ -81,6 +81,7 @@
   start:
     hour: 19
     min: 45
+    sec: 36
   end:
     hour: 20
     min: 41

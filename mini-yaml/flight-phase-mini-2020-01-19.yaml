@@ -11,8 +11,8 @@
   name: circle 1
   start:
     hour: 14
-    min: 35
-    sec: 15
+    min: 36 # 35
+    sec: 2 #15
   end:
     hour: 15
     min: 30
